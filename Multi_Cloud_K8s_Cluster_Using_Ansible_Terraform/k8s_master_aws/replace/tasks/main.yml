@@ -1,26 +1,26 @@
 ---
 # tasks file for replace
 - name: "Start httpd service"
-    service:
+  service:
             name: "httpd"
             state: started
 
 - name: "Install git software"
-    package:
+  package:
             name: "git"
             state: present
 
 - name: "Download k8s webapp code"
-    shell: "git clone https://github.com/Buddhiprakash-jain/K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform.git"
+  shell: "git clone https://github.com/Buddhiprakash-jain/K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform.git"
 
 - name: "Change mode of k8s file"
-    shell: "chmod +x K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/k8s.py"
+  shell: "chmod +x K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/k8s.py"
 
 - name: "Moving k8s.py file"
-    shell: "mv K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/k8s.py /var/www/cgi-bin/"
+  shell: "mv K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/k8s.py /var/www/cgi-bin/"
 
 - name: "Moving html folder  files"
-    shell: "mv K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/* /var/www/html/"
+  shell: "mv K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/* /var/www/html/"
 
 - name: "Change ip in pod file"
   lineinfile:
