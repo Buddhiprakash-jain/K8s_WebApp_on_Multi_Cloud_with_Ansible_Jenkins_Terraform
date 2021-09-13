@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="index.css"></link>
+<script src="k8sdeploy.js"></script>
+<script src="k8ssvc.js"></script>
+<script src="k8spod.js"></script>
+<script src="k8sreplica.js"></script>
+<script src="k8snamespace.js"></script>
+<script src="k8sdelete.js"></script>
+<script src="linkedin.js"></script>
+
+
+
+<!doctype html>
+ <html>
+ <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Kubernetes WebApp</title>
+    <link href='' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+   
+    </head>
+    <body oncontextmenu='return false' class='snippet-body'>
+    <div class="wrapper">
+<div class="sidebar">                        
+    <h2>Kubernetes Menu</h2>
+        <ul>
+            <li onclick="podmenu();"><a href="#">Pods</a></li>
+            <li onclick="deploymenu();"><a href="#">Deployments</a></li>
+            <li onclick="servicemenu();"><a href="#">Services</a></li>
+            <li onclick="replicamenu();"><a href="#">ReplicaSets</a></li>
+            <li onclick="namespacemenu();"><a href="#">Namespaces</a></li>
+            <li onclick="k8sdelete();"><a href="#">Delete Entire Environment</a></li>
+        </ul>
+	<center>
+       <div class="linkedin"><a href="#">Linked<i onclick="linkedin();" class="fa fa-linkedin"></i>Profile</a></div>
+	</center>
+    </div>    
+    
+        <div class="main_content">
+        <h2><div class="header"><img src="http://www.thagomizer.com/img/kubernetes-logo.png" height="30px" width="30px">Welcome to Kubernetes WebApp!!</div></h2>  
+        <div class="info">
+        <div id="d1"></div>
+        <div id="d2"></div>
+        <div id="d3"></div>
+	<div id="d5"></div>
+	<div id="d6"></div>
+	<pre>
+        <div id="d4"></div>
+	</pre>
+        </div>
+        </div>
+                               
+ </body>
+</html>
+
+<script>
+   
