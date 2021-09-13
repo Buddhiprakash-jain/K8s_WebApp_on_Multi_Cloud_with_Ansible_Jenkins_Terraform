@@ -1,0 +1,77 @@
+- name: "Installing dependency"
+  shell: "yum install -y yum-utils"
+
+- name: "Installing dependency"
+  shell: "yum-config-manager  --add-repo  https://download.docker.com/linux/centos/docker-ce.repo"
+
+- name: "Installing docker"
+  shell: "yum install -y  docker-ce docker-ce-cli containerd.io"
+
+- name: "Enabelling docker services"
+  service:
+    name: "docker"
+    state: started
+    enabled: yes
+
+- name: "copying docker  file"
+  copy:
+    src:  "daemon.json"
+    dest: "/etc/docker/daemon.json"
+
+- name: "restarting docker services"
+  service:
+    name: "docker"
+    state: restarted
+
+
+- name: "Creating file"
+  shell: "touch /etc/yum.repos.d/kubernetes.repo"
+
+- name: "configuring kubernetes repo"
+  copy:
+    src: "kubernetes.repo"
+    dest: "/etc/yum.repos.d/kubernetes.repo"
+
+- name: "Kubernetes Installation"
+  shell: "yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes"
+
+- name: "Kubelet service starting"
+  service:
+    name: "kubelet"
+    state: started
+    enabled: yes
+
+- name: "iproute-tc installation"
+  package:
+    name: "iproute-tc"
+    state: present
+
+- name: "copying docker  file"
+  copy:
+    src:  "tables.txt"
+    dest: "/etc/sysctl.d/k8s.conf"
+
+    
+- name: "starting system service"
+  shell: "sysctl --system"
+
+- name: "Editing internal file"
+  shell: "echo 1 > /proc/sys/net/ipv4/ip_forward"
+  
+- name: "Token Copy..."
+  copy:
+   src: "token.txt"
+   dest: "/token.txt"
+
+- name: "Join..."
+  command: "bash /token.txt"
+  ignore_errors: yes
+
+- name: "Create ENV folder"
+  command: "mkdir /var/run/flannel"
+  ignore_errors: yes
+
+- name: "Copy ENV file"
+  copy:
+   src: "env.txt"
+   dest: "/var/run/flannel/subnet.env"

@@ -1,0 +1,68 @@
+---
+# tasks file for replace
+- name: "Start httpd service"
+    service:
+            name: "httpd"
+            state: started
+
+- name: "Install git software"
+    package:
+            name: "git"
+            state: present
+
+- name: "Download k8s webapp code"
+    shell: "git clone https://github.com/Buddhiprakash-jain/K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform.git"
+
+- name: "Change mode of k8s file"
+    shell: "chmod +x K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/k8s.py"
+
+- name: "Moving k8s.py file"
+    shell: "mv K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/k8s.py /var/www/cgi-bin/"
+
+- name: "Moving html folder  files"
+    shell: "mv K8s_WebApp_on_Multi_Cloud_with_Ansible_Jenkins_Terraform/WebApp Code/* /var/www/html/"
+
+- name: "Change ip in pod file"
+  lineinfile:
+       path: "/var/www/html/k8spod.js"
+       regexp: "^ip ="
+       line: "ip = '{{ ip }}'"
+
+- name: "Change ip in delete file"
+  lineinfile:
+       path: "/var/www/html/k8sdelete.js"
+       regexp: "^ip ="
+       line: "ip = '{{ ip }}'"
+
+- name: "Change ip in deploy file"
+  lineinfile:
+       path: "/var/www/html/k8sdeploy.js"
+       regexp: "^ip ="
+       line: "ip = '{{ ip }}'"
+
+- name: "Change ip in namespace file"
+  lineinfile:
+       path: "/var/www/html/k8snamespace.js"
+       regexp: "^ip ="
+       line: "ip = '{{ ip }}'"
+
+- name: "Change ip replica file"
+  lineinfile:
+       path: "/var/www/html/k8sreplica.js"
+       regexp: "^ip ="
+       line: "ip = '{{ ip }}'"
+
+- name: "Change ip in service file"
+  lineinfile:
+       path: "/var/www/html/k8sservice.js"
+       regexp: "^ip ="
+       line: "ip = '{{ ip }}'"
+
+- name: "Give Permission to Apache user"
+  lineinfile:
+       path: "/etc/sudoers"
+       #regexp: "^ip ="
+       insertafter: "root       ALL=(ALL)         ALL"
+       line: "apache  ALL=(ALL)  NOPASSWD: ALL"
+
+

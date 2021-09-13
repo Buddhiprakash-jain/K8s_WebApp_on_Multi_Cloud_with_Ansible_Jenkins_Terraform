@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+  - shell: chmod 400 ./azure_key.pem
+
+
+- hosts: tag_env_azureworker2
+  roles:
+  - role: "k8s_workernode"
+
+

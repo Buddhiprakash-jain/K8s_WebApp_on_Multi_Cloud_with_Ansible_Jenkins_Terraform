@@ -1,0 +1,1 @@
+kubeadm join 65.2.149.62:6443 --token 8919vi.vvcez49hrcgm7kr3 --discovery-token-ca-cert-hash sha256:496668dfcf56cf131ab9172c0f8dae3d72101f9e5b0a9626d9a3f5fc1ee24bec 

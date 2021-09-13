@@ -1,0 +1,17 @@
+[defaults]
+inventory = ./azure/myazure_rm.yml
+host_key_checking = false
+remote_user = azureuser
+private_key_file = ./azure/azure_key.pem
+roles_path=/root/k8s_cluster_setup
+forks=5
+
+[inventory]
+enable_plugins=azure_rm
+
+
+[privilege_escalation]
+become = true
+become_method = sudo
+become_user = root
+

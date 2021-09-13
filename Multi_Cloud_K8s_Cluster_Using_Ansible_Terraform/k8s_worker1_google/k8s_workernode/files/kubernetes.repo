@@ -1,0 +1,4 @@
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
+gpgcheck=0

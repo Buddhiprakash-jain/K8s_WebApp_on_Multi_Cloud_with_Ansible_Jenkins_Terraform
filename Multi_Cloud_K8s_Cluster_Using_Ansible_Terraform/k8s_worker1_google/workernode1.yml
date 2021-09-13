@@ -1,0 +1,9 @@
+- hosts: localhost
+  tasks:
+  - shell: chmod 400 ./pkey.pem
+
+- hosts: tag_env_googleworker1
+  roles:
+  - role: "k8s_workernode"
+
+
