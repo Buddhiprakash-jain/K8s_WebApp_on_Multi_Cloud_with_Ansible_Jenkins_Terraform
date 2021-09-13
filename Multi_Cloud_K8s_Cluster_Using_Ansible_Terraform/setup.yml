@@ -62,7 +62,7 @@
           var: azureworker2.stdout_lines
 
    - name: "Configuring Kubernetes WebApp"
-     command: "chdir=./k8s_master_aws ansible-playbook resolve.yml"
+     command: "chdir=./k8s_master_aws ansible-playbook replace.yml"
      register: k8swebapp
 
    - debug:
