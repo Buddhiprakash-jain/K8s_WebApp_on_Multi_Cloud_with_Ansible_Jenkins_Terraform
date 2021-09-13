@@ -1,5 +1,10 @@
 ---
 # tasks file for replace
+- name: "Install httpd software"
+  package:
+            name: "httpd"
+            state: present
+            
 - name: "Start httpd service"
   service:
             name: "httpd"
