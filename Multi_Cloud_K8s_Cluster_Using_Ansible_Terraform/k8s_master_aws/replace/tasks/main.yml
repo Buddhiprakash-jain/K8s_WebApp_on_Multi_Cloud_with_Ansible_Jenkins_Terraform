@@ -59,7 +59,7 @@
 
 - name: "Change ip in service file"
   lineinfile:
-       path: "/var/www/html/k8sservice.js"
+       path: "/var/www/html/k8ssvc.js"
        regexp: "^ip ="
        line: "ip = '{{ ip }}'"
 
